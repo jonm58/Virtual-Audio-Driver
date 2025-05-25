@@ -16,10 +16,10 @@ jobs:
         platform: [x64, ARM64]
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4.2.2
       
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1
+        uses: microsoft/setup-msbuild@v2
       
       - name: Check Chocolatey installation
         run: choco --version
@@ -163,7 +163,7 @@ jobs:
       
       - name: Upload built driver
         id: upload_artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: Built-Driver-${{ matrix.configuration }}-${{ matrix.platform }}
           path: |
@@ -207,7 +207,7 @@ jobs:
 
       - name: Upload signed artifacts
         id: upload_signed_artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: Signed-Driver-${{ matrix.configuration }}-${{ matrix.platform }}
           path: |
@@ -247,7 +247,7 @@ jobs:
           options: /O+
 
       - name: Upload Installer as artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: Installer-${{ matrix.configuration }}-${{ matrix.platform }}
           path: inno-setup\output\*.exe
